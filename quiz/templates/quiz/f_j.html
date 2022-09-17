@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Alphabets F to J</title>
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+    </style>
+     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+     <div class="main_div">
+       <div class="header">
+          <div class="home_link">
+            <font size = "6" >
+               <p><strong><a href="{% url 'quiz:home' %}">Home</a></strong><p>
+            </font>
+          </div>
+          <div class="main_title">
+            <font size = "10">
+               <p><strong><center>Alphabets F to J</center></strong><p>
+            </font>
+          </div>
+       </div>
+
+
+       <div class="full_section">
+           <div class="w_50">
+              <center><img class="img_w mb_space" src="{% static 'assets/images/f_j.png' %}"></center>
+           </div>
+           <div class="w_50">
+              <center><img class="img_w" src="{% static 'assets/images/alphabetsicon.png' %}"></center>
+
+              <center><audio controls >
+                 <source src="{% static 'assets/f_j.mp3' %}" type="audio/mpeg"/>
+              </audio><center>
+           </div>
+
+       </div>
+
+        <div class="footer_section">
+            <div class="footer_back">
+                  <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:a_e' %}"><- Back</a></strong><p>
+                  </font>
+            </div>
+            <div class="footer_link">
+                 <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:k_o' %}">Learn Alphabets K to O -> </a></strong><p>
+                 </font>
+            </div>
+
+        </div>
+
+
+
+   </div>
+
+
+
+
+  </body>
+</html>

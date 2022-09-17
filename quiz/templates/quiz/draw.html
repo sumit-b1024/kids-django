@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script type="text/JavaScript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+    <meta charset="utf-8">
+    <title>Math Excercise</title>
+    <style>
+	button {
+	position:absolute;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+	 border: 2px solid black;
+ padding: 0 0 0 0;
+  color: black;
+ float:left;
+  font-size: 16px;
+  cursor: pointer;
+  
+}
+ 
+	#myCanvas {
+	cursor: crosshair;
+    
+}
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+	  .sum {
+    color: orange;
+    font-weight: 600;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 32px;
+    letter-spacing: 14px;
+}
+    </style>
+     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+  </head>
+
+  <body>
+<script>
+window.onload = function() {
+	var myCanvas = document.getElementById("myCanvas");
+	var ctx = myCanvas.getContext("2d");
+    
+    // Fill Window Width and Height
+    myCanvas.width = 750;
+	myCanvas.height = 450;
+	
+	// Set Background Color
+    ctx.fillStyle="#fff";
+    ctx.fillRect(0,0,myCanvas.width,myCanvas.height);
+	ctx.strokeStyle = "red";
+	ctx.lineWidth = 3;
+	$("button").click(function(){
+	 
+		ctx.strokeStyle = $(this).attr("color");
+		ctx.lineWidth = $(this).attr("line-width");
+	});
+    // Mouse Event Handlers
+	if(myCanvas){
+		var isDown = false;
+		var canvasX, canvasY;
+		//ctx.lineWidth = 2;
+		
+		$(myCanvas)
+		.mousedown(function(e){
+			isDown = true;
+			ctx.beginPath();
+			canvasX = e.pageX - myCanvas.offsetLeft;
+			canvasY = e.pageY - myCanvas.offsetTop;
+			ctx.moveTo(canvasX, canvasY);
+		})
+		.mousemove(function(e){
+			if(isDown !== false) {
+				canvasX = e.pageX - myCanvas.offsetLeft;
+				canvasY = e.pageY - myCanvas.offsetTop;
+				ctx.lineTo(canvasX, canvasY);
+				
+				ctx.stroke();
+			}
+		})
+		.mouseup(function(e){
+			isDown = false;
+			ctx.closePath();
+		});
+	}
+	
+	// Touch Events Handlers
+	draw = {
+		started: false,
+		start: function(evt) {
+
+			ctx.beginPath();
+			ctx.moveTo(
+				evt.touches[0].pageX,
+				evt.touches[0].pageY
+			);
+
+			this.started = true;
+
+		},
+		move: function(evt) {
+
+			if (this.started) {
+				ctx.lineTo(
+					evt.touches[0].pageX,
+					evt.touches[0].pageY
+				);
+
+				ctx.strokeStyle = "#000";
+				//ctx.lineWidth = 5;
+				ctx.stroke();
+			}
+
+		},
+		end: function(evt) {
+			this.started = false;
+		}
+	};
+	
+	// Touch Events
+	myCanvas.addEventListener('touchstart', draw.start, false);
+	myCanvas.addEventListener('touchend', draw.end, false);
+	myCanvas.addEventListener('touchmove', draw.move, false);
+	
+	// Disable Page Move
+	document.body.addEventListener('touchmove',function(evt){
+		evt.preventDefault();
+	},false);
+};
+</script>
+   <div class="main_div">
+       <div class="header">
+          <div class="home_link">
+            <font size = "6" >
+               <p><strong><a href="{% url 'quiz:home' %}">Home</a></strong><p>
+            </font>
+          </div>
+          <div class="main_title">
+            <font size = "10">
+               <p><strong><center>Math Excercise </center></strong><p>
+            </font>
+          </div>
+       </div>
+
+
+       <div class="full_section">
+           <div class="w_100">
+		   
+              <center> 
+			  
+			{% for i in questions %}
+				<span class="sum">{{i}}	= Answer</span>
+			<br/>
+		    {% endfor %}
+			<br/><br/>
+			<div class="row">
+			<div class="col-md-4">  </div>
+			<div class="col-md-4">	
+			<button style="margin-left:-374px;" line-width="5" color="red"><img width="15" src="{% static 'assets/images/red-pen.png' %}"/></button>
+			<button style="margin-left:-353px;" line-width="5" color="green"><img width="15" src="{% static 'assets/images/green-pen.png' %}"/></button>
+			<button style="margin-left:-332px;" line-width="5" color="blue"><img width="15" src="{% static 'assets/images/blue-pen.png' %}"/></button>
+<button style="margin-left:-311px;" line-width="15"  color="white">Eraser</button>
+
+			</div>
+			<div class="col-md-4"> </div>
+			
+			</div>
+			
+		
+			
+		   	<canvas id="myCanvas">
+		Sorry, your browser does not support HTML5 canvas technology.
+	</canvas>
+		   </center>
+           </div>
+           <div class="w_100">
+          
+
+               
+           </div>
+
+       </div>
+
+        <div class="footer_section">
+            <div class="footer_back">
+                  <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:mathtopicselection' %}"><- Back</a></strong><p>
+                  </font>
+            </div>
+            <div class="footer_link">
+                 <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:numberquiz' %}">Numbers Quiz -> </a></strong><p>
+                 </font>
+            </div>
+
+        </div>
+
+
+
+   </div>
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

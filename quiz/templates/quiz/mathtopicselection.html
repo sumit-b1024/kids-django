@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Math Topic Selection</title>
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+    </style>
+  </head>
+  <body background="">
+    <font color = #669358>
+      <font size = "10">
+      <p><strong><center>Math Topic Selection<br /><br /></center></strong><p>
+      </font>
+      <font size = "6">
+      <p><strong><center><a href="{% url 'quiz:home' %}">Back To Home</a><br /><br /></center></strong><p>
+      </font>
+    </font>
+      <font color = #669358>
+        <font size = "6">
+          <p><strong><center><a href="{% url 'quiz:numbersintro' %}">1. Numbers</a><center></strong></p>
+          <p><strong><center><a href="{% url 'quiz:additionintro' %}">2. Addition</a><center></strong></p>
+          <p><strong><center>3. Subtraction<center></strong></p>
+          <p><strong><center>4. Multiplication<center></strong></p>
+          <p><strong><center>5. Division<center></strong></p>
+          <p><strong><center>6. Sorting Game<center></strong></p>
+        </font>
+      </font>
+  </body>
+</html>

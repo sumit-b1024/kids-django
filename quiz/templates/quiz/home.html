@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Kiddies Learning App</title>
+
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+
+    </style>
+     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body background="">
+   <div class="w-100">
+    <center><img src="{% static 'assets/images/newturtle.png' %}" style = ""></center>
+    <img class="vinesleft" src="{% static 'assets/images/vinesleft.png' %}">
+    <img class="vinesright" src="{% static 'assets/images/vinesright.png' %}">
+    <img class="butterflyblue" src="{% static 'assets/images/butterflyblue.png' %}">
+    <img class="butterflyyellow" src="{% static 'assets/images/butterflyyellow.png' %}">
+
+    <font color = #669358>
+
+      <p>
+        <font size = "10">
+          <strong><center>Kiddies Learning<br /></center></strong>
+        </font>
+      </p>
+
+      <font size = "6">
+        <strong><center>Educational Tool for Children<br /><br /></center></strong>
+      </font>
+
+      <font size = "5">
+        <em><center>We are here to make learning fun and accessible to <strong>all the curious kids worldwide.</strong>.</center></em>
+        <em><center>As goes the tale of Toby the Tortoise, <strong>"slow and steady wins the race."</strong></center></em>
+        <em><center><strong>With patience comes success.<br /><br /></strong></center><em>
+      </font>
+
+    </font>
+
+    <p>
+      <font color = #669358>
+        <font size = "6">
+          <strong>
+            <center><a href="{% url 'quiz:mathtopicselection' %}">Math</a></center>
+            <center><a href="{% url 'quiz:englishtopicselection' %}">English</a></center>
+          </strong>
+        </font>
+      </font>
+    </p>
+     </div>
+  </body>
+</html>

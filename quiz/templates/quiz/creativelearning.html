@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <meta charset="utf-8">
+    <title>Creative Learning</title>
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+      .heading-container{background:black;}
+      .board{background:white;height:400px;}
+      .heading-text{z-index:500;font-family: 'American Typewriter','Mv Boli',sans-serif;color:#ed9861;font-size:26px;padding-right:25px;font-weight:600}
+
+      .item {position:absolute;display:none;}
+
+      .item-bird{width:100%;height:100%;background-image: url(/static/main/bird.png) ;background-size: 102px  ;background-repeat: no-repeat; }
+
+
+      .item-sun{width:100%;height:100%;background-image: url(/static/main/sun.png) ;background-size: 102px  ;background-repeat: no-repeat; }
+
+      .item-pot{width:100%;height:100%;background-image: url(/static/main/pot.png) ;background-size: 102px  ;background-repeat: no-repeat; }
+
+      .item-grass{width:100%;height:100%;background-image: url(https://editzstock.com/wp-content/uploads/2022/05/Download-PNG-image-Grass-Png-Image-Green-Grass-Png-Picture-3-1024x767.png) ;background-size: 740px 385px ;background-repeat: no-repeat; }
+
+
+      .item-house{width:100%;height:100%;background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/818946/hut-clipart-md.png) ;background-size: 374px 385px ;background-repeat: no-repeat; }
+      .item-tree{width:100%;height:399px;background-image: url(https://www.picng.com/upload/palm_tree/png_palm_tree_6834.png) ;background-size: 239px 427px ;background-repeat: no-repeat; }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <script>
+    $( function() {
+
+      $( ".draggable" ).draggable( {
+
+        revert:  'invalid',
+        start: function() {
+
+        },
+        drag: function() {
+
+        },
+        stop: function() {
+          var topAdjust= parseInt( $(this).attr("adjust-top") );
+          var leftAdjust= parseInt( $(this).attr("adjust-left") );
+          var position = $(this).position();
+          position.top+=topAdjust;
+          position.left+=leftAdjust;
+          console.log(position);
+          console.log(topAdjust);
+          $( $(this).attr("target-element")).css(position);
+        }
+
+
+      });
+
+      $( "#draggable3" ).draggable({ containment: ".board", scroll: false });
+
+      $(".board,.heading-container").droppable(
+        { accept: '.draggable' }
+        )
+
+
+        $("#show_img").click(function(){
+          $("#hide_img").show();
+          $(this).css("display","none");
+          $(".heading-text").css("display","none");
+            $(".item").show();
+
+        });
+
+        $("#hide_img").click(function(){
+          $(this).css("display","none");
+          $("#show_img").show();
+          $(".heading-text").show();
+            $(".item").css("display","none");
+
+        });
+    } );
+    </script>
+  </head>
+  <body background="">
+    <font color = #669358>
+      <font size = "10">
+      <p><strong><center>Creative Learning<br /><br /></center></strong><p>
+      </font>
+    </font>
+    <div class="row" style="">
+      <div class="col-md-3"> </div>
+    <div class="col-md-6  heading-container">|
+      <span id="draggable" class="heading-text draggable"  adjust-top="-55" adjust-left="-27" target-element=".item-bird">Bird</span>
+      <span    class="heading-text draggable" adjust-top="-380" adjust-left="-327" target-element=".item-grass">Grass</span>
+      <span class="heading-text draggable" adjust-top="-380" adjust-left="-122" target-element=".item-house">House</span>
+      <span class="heading-text draggable" adjust-top="-55" adjust-left="3" target-element=".item-pot">Plant-Pot</span>
+      <span class="heading-text draggable  " adjust-top="-388" adjust-left="-52" target-element=".item-tree">Tree</span>
+      <span class="heading-text draggable" adjust-top="-55" adjust-left="-27" target-element=".item-sun">Sun</span>
+    </div>
+
+    <div class="col-md-2"> </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"> </div>
+
+      <div class="col-md-6">
+
+
+        <div class="board">
+
+          <div class="item item-tree"></div>
+
+          <div class="item item-house"> </div>
+
+          <div class="item item-grass"> </div>
+          <div class="item item-sun"> </div>
+          <div class="item item-bird"> </div>
+          <div class="item item-pot"> </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-3 align-self-center">
+
+       <div> <button class="btn btn-success  " id="show_img"  >SHOW PICTURE</button>
+
+        <button class="btn btn-danger  " style="display:none;" id="hide_img"  >Hide PICTURE</button></div>
+
+
+      </div>
+    </div>
+    <font size = "6" style="position: absolute; top:60px; left: 50px">
+    <p><strong><a href="{% url 'quiz:home' %}">Home</a><br /><br /></strong><p>
+    </font>
+
+    <font size = "6" style="position: absolute; top:850px; left: 50px">
+    <p><strong><a href="{% url 'quiz:englishtopicselection' %}"><- Back</a><br /><br /></strong><p>
+    </font>
+
+  </body>
+</html>

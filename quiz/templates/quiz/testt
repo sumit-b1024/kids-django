@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Numbers Quiz</title>
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+    </style>
+  </head>
+  <body>
+
+    <form name="fish_form" id="fish_form" onsubmit="return false;" style = "position: absolute; right:650px; top:350px">
+      <div>
+        <input type="number" name="fish_count" id="fish_count" required>
+        <button type="submit">Answer</button>
+      </div>
+      <div>
+          <span id="fish_form_result"></span>
+        </div>
+    </form>
+
+    <form name="whale_form" id="whale_form" style = "position: absolute; right:600px; top:445px" onsubmit="return false;">
+      <div>
+        <input type="number" name="whale_count" id="whale_count" required>
+        <button type="submit">Answer</button>
+      </div>
+      <div>
+          <span id="whale_form_result"></span>
+        </div>
+    </form>
+
+    <form name="crab_form"  id="crab_form" style = "position: absolute; right:625px; top:540px" onsubmit="return false;">
+      <div>
+        <input type="number" name="crab_count" id="crab_count" required>
+        <button type="submit">Answer</button>
+      </div>
+      <div>
+          <span id="crab_form_result"></span>
+        </div>
+    </form>
+
+    <form name="dolphin_form" id="dolphin_form" style = "position: absolute; right:580px; top:635px" onsubmit="return false;">
+      <div>
+        <input type="number" name="dolphin_count" id="dolphin_count" required>
+        <button type="submit">Answer</button>
+      </div>
+      <div>
+          <span id="dolphin_form_result"></span>
+        </div>
+    </form>
+
+    <form name="octopus_form"  id="octopus_form" style = "position: absolute; right:580px; top:730px" onsubmit="return false;">
+      <div>
+        <input type="number" name="octopus_count" id="octopus_count" required>
+        <button type="submit">Answer</button>
+      </div>
+      <div>
+          <span id="octopus_form_result"></span>
+        </div>
+    </form>
+
+    <center><img src="{% static 'assets/images/numbersquiz.png' %}" style = "position: absolute; right:1000px; top:100px"></center>
+
+    <font color = #669358>
+      <font size = "10">
+        <p><strong><center>Numbers Quiz<br /><br/></center></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:60px; left: 50px">
+        <p><strong><a href="{% url 'quiz:home' %}">Home</a><br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:850px; left: 50px">
+      <p><strong><a href="{% url 'quiz:numbersintro' %}"><- Back</a><br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:850px; left: 1500px">
+        <p><strong><a href="{% url 'quiz:mathtopicselection' %}">Math Topic Selection -> </a><br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:200px; left:950px">
+        <p><strong>How many . . .<br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:250px; left:950px">
+        <p><strong><br /><br />Fish? <br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:300px; left:950px">
+        <p><strong><br /><br /><br />Whales? <br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:350px; left:950px">
+        <p><strong><br /><br /><br /><br />Crabs? <br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:400px; left:950px">
+        <p><strong><br /><br /><br /><br /><br />Dolphins? <br /><br /></strong><p>
+      </font>
+
+      <font size = "6" style="position: absolute; top:450px; left:950px">
+        <p><strong><br /><br /><br /><br /><br /><br />Octopus? <br /><br /></strong><p>
+      </font>
+
+    </font>
+    <script>
+
+$(document).ready(function(){
+
+      $("#fish_form").submit(function(){
+          var answer = $('#fish_count').val();
+          if(answer != '1'){
+            $("#fish_form_result").text("Incorrect answer");
+          }else{
+             $("#fish_form_result").text("correct");
+          }
+      });
+
+      $("#whale_form").submit(function(){
+          var answer = $('#whale_count').val();
+          if(answer != '2'){
+            $("#whale_form_result").text("Incorrect answer");
+          }else{
+             $("#whale_form_result").text("correct");
+          }
+      });
+
+      $("#crab_form").submit(function(){
+          var answer = $('#crab_count').val();
+          if(answer != '3'){
+            $("#crab_form_result").text("Incorrect answer");
+          }else{
+             $("#crab_form_result").text("correct");
+          }
+      });
+      $("#dolphin_form").submit(function(){
+          var answer = $('#dolphin_count').val();
+          if(answer != '3'){
+            $("#dolphin_form_result").text("Incorrect answer");
+          }else{
+             $("#dolphin_form_result").text("correct");
+          }
+      });
+      $("#octopus_form").submit(function(){
+          var answer = $('#octopus_count').val();
+          if(answer != '5'){
+            $("#octopus_form_result").text("Incorrect answer");
+          }else{
+             $("#octopus_form_result").text("correct");
+          }
+      });
+    });
+    </script>
+  </body>
+</html>

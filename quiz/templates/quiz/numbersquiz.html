@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Numbers Quiz</title>
+    <style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #FFEC9D;
+      }
+    </style>
+    <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+  <div class="main_div">
+
+       <div class="header">
+          <div class="home_link">
+            <font size = "6" >
+               <p><strong><a href="{% url 'quiz:home' %}">Home</a></strong><p>
+            </font>
+          </div>
+          <div class="main_title">
+            <font size = "10">
+               <p><strong><center>Numbers Quiz</center></strong><p>
+            </font>
+          </div>
+       </div>
+
+
+      <div class="full_section quiz_page">
+           <div class="w_50">
+              <center><img class="img_w mb_space" src="{% static 'assets/images/numbersquiz.png' %}"></center>
+           </div>
+           <div class="w_50">
+
+              <div class="quiz_submit_section">
+
+
+                <div class="quiz_submit_box_main_ti">
+                    <div class="quiz_title">
+                       <strong>How many . . .</strong>
+                    </div>
+
+                </div>
+
+                <div class="quiz_submit_box">
+                    <div class="quiz_title">
+                       <strong>Fish?</strong>
+                    </div>
+                     <div class="quiz_form_section">
+                        <form name="fish_form" id="fish_form" onsubmit="return false;">
+                          <div>
+                            <input type="number" name="fish_count" id="fish_count" required>
+                            <button type="submit">Answer</button>
+                          </div>
+                          <div>
+                              <span id="fish_form_result"></span>
+                          </div>
+                        </form>
+
+                     </div>
+                </div>
+
+                <div class="quiz_submit_box">
+                    <div class="quiz_title">
+                       <strong>Whales?</strong>
+                    </div>
+                     <div class="quiz_form_section">
+                        <form name="whale_form" id="whale_form"  onsubmit="return false;">
+                          <div>
+                            <input type="number" name="whale_count" id="whale_count" required>
+                            <button type="submit">Answer</button>
+                          </div>
+                          <div>
+                              <span id="whale_form_result"></span>
+                            </div>
+                        </form>
+
+                     </div>
+                </div>
+
+               <div class="quiz_submit_box">
+                    <div class="quiz_title">
+                       <strong>Crabs?</strong>
+                    </div>
+                     <div class="quiz_form_section">
+                        <form name="crab_form"  id="crab_form" onsubmit="return false;">
+                          <div>
+                            <input type="number" name="crab_count" id="crab_count" required>
+                            <button type="submit">Answer</button>
+                          </div>
+                          <div>
+                              <span id="crab_form_result"></span>
+                            </div>
+                        </form>
+
+                     </div>
+                </div>
+
+               <div class="quiz_submit_box">
+                    <div class="quiz_title">
+                       <strong>Dolphins?</strong>
+                    </div>
+                     <div class="quiz_form_section">
+                        <form name="dolphin_form" id="dolphin_form" onsubmit="return false;">
+                          <div>
+                            <input type="number" name="dolphin_count" id="dolphin_count" required>
+                            <button type="submit">Answer</button>
+                          </div>
+                          <div>
+                              <span id="dolphin_form_result"></span>
+                            </div>
+                        </form>
+
+                     </div>
+                </div>
+
+               <div class="quiz_submit_box">
+                    <div class="quiz_title">
+                       <strong>Octopus?</strong>
+                    </div>
+                     <div class="quiz_form_section">
+                        <form name="octopus_form"  id="octopus_form" onsubmit="return false;">
+                          <div>
+                            <input type="number" name="octopus_count" id="octopus_count" required>
+                            <button type="submit">Answer</button>
+                          </div>
+                          <div>
+                              <span id="octopus_form_result"></span>
+                            </div>
+                        </form>
+
+                     </div>
+                </div>
+
+
+
+              </div>
+
+           </div>
+
+       </div>
+
+
+
+       <div class="footer_section">
+            <div class="footer_back">
+                  <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:numbersintro' %}"><- Back</a></strong><p>
+                  </font>
+            </div>
+            <div class="footer_link">
+                 <font size = "6" >
+                     <p><strong><a href="{% url 'quiz:mathtopicselection' %}">Math Topic Selection -> </a></strong><p>
+                 </font>
+            </div>
+
+        </div>
+
+
+  </div>
+
+
+
+
+    <script>
+
+$(document).ready(function(){
+
+      $("#fish_form").submit(function(){
+          var answer = $('#fish_count').val();
+          if(answer != '1'){
+            $("#fish_form_result").text("Incorrect answer");
+          }else{
+             $("#fish_form_result").text("correct");
+          }
+      });
+
+      $("#whale_form").submit(function(){
+          var answer = $('#whale_count').val();
+          if(answer != '2'){
+            $("#whale_form_result").text("Incorrect answer");
+          }else{
+             $("#whale_form_result").text("correct");
+          }
+      });
+
+      $("#crab_form").submit(function(){
+          var answer = $('#crab_count').val();
+          if(answer != '3'){
+            $("#crab_form_result").text("Incorrect answer");
+          }else{
+             $("#crab_form_result").text("correct");
+          }
+      });
+      $("#dolphin_form").submit(function(){
+          var answer = $('#dolphin_count').val();
+          if(answer != '3'){
+            $("#dolphin_form_result").text("Incorrect answer");
+          }else{
+             $("#dolphin_form_result").text("correct");
+          }
+      });
+      $("#octopus_form").submit(function(){
+          var answer = $('#octopus_count').val();
+          if(answer != '5'){
+            $("#octopus_form_result").text("Incorrect answer");
+          }else{
+             $("#octopus_form_result").text("correct");
+          }
+      });
+    });
+    </script>
+  </body>
+</html>
